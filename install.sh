@@ -4,6 +4,14 @@ cd ~/
 # Update and upgrade the system
 sudo apt update && sudo apt upgrade -y
 
+sudo apt-get --purge remove wayvnc
+wget https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.12.1-Linux-ARM64.deb
+sudo apt install ./VNC-Server-7.12.1-Linux-ARM64.deb
+sudo systemctl enable vncserver-x11-serviced.service
+sudo systemctl start vncserver-x11-serviced.service
+sudo systemctl status vncserver-x11-serviced.service
+
+
 # Install required packages
 sudo apt install -y python3-venv git
 
