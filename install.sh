@@ -9,8 +9,6 @@ wget https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.12.1-Lin
 sudo apt install ./VNC-Server-7.12.1-Linux-ARM64.deb -y
 sudo systemctl enable vncserver-x11-serviced.service
 sudo systemctl start vncserver-x11-serviced.service
-sudo systemctl status vncserver-x11-serviced.service
-
 
 # Install required packages
 sudo apt install -y python3-venv git
