@@ -10,6 +10,19 @@ sudo apt install ./VNC-Server-7.12.1-Linux-ARM64.deb -y
 sudo systemctl enable vncserver-x11-serviced.service
 sudo systemctl start vncserver-x11-serviced.service
 
+CMDLINE_FILE="/boot/firmware/cmdline.txt"
+CONFIG_FILE="/boot/firmware/config.txt"
+sudo sed -i '1s/$/ video=HDMI-A-1:1920x1080M@60D/' "$CMDLINE_FILE"
+
+LINES_TO_APPEND=$(cat <<EOL
+
+# HDMI settings added by script
+hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_mode=82
+EOL
+)
+sudo echo "$LINES_TO_APPEND" >> "$CONFIG_FILE"
 # Install required packages
 sudo apt install -y python3-venv git
 
